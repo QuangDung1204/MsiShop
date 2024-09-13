@@ -1,0 +1,182 @@
+@use "sass:map";
+@import "style/pages/all";
+
+.center-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold; 
+    margin-bottom: 5px;
+  }
+  
+  
+  
+
+.container__slider {
+    max-width: 1200px !important;
+    margin-top: 20px  !important;
+    .slider {
+        .slider__item {
+            height: 300px;
+            margin: auto;
+            position: relative;
+            border: 1px solid #efefef;
+            background: #fbfafa;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: top center;
+            border-radius: 5px;
+        }
+        img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 250px;
+        }
+        p {
+            position: absolute;
+            left: 10%;
+            bottom: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: map.get($theme-colors, "normal-text");
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 12px 0 10px;
+            cursor: pointer;
+
+                //  &:hover {
+                //      background: #efefef;
+                //  }
+        }
+
+    }
+    .react-multi-carousel-item {
+        margin-left: 5px;
+        margin-right: 5px;
+
+    }
+}
+
+.featured {
+    margin-top: 50px;
+
+    .section_title {
+        margin-bottom: 30px;
+        text-align: center;
+        h2 {
+            position: relative;
+        }
+        h2:after {
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+            right: 0;
+            height: 4px;
+            width: 80px;
+            background: map.get($theme-colors, "main");
+            content: "";
+            margin: 0 auto;
+        }
+    }
+    
+    .react-tabs {
+        ul {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        li {
+            list-style: none;
+            font-size: 18px;
+            color: map.get($theme-colors, "normal-text");
+            display: inline-block;
+            margin-right: 25px;
+            position: relative;
+            cursor: pointer;
+        }
+    }
+    .featured__item {
+        margin-bottom: 50px;
+        border: 1px solid #efefef;
+        margin-left: 10px;
+        &:hover {
+            .featured__item__pic__hover{
+                bottom: -15% !important;
+            }
+        }
+
+
+        .featured__item__pic {
+            height: 270px;
+            position: relative;
+            overflow: hidden;
+            background-position: center;
+            .featured__item__pic__hover {
+                position: absolute;
+                left: 0;
+                bottom: -40%;
+                width: 100%;
+                text-align: center; 
+                transition: all, 0.5s;
+                li {
+                    list-style: none;
+                    display: inline-block;
+                    margin-right: 10px;
+                    &:hover {
+                        svg{
+                            background: #7fad39;
+                            border-color: #7fad39;
+                            color: #ffffff;
+                            transform: rotate(360deg) !important;
+                        }
+                    }
+                    svg {
+                        border-radius: 50%;
+                        padding: 10px;
+                        height: 20px;
+                        width: 20px;
+                        border: 1px solid #ebebeb;
+                        background: #ffffff;
+                        color: #565555;
+                        transition: all, 0.3s;
+                    }
+                }
+            }
+        
+            
+
+        }
+        .featured__item__text {
+            text-align: center;
+            h6 {
+                margin-top: 10px;
+                font-size: 16px;
+                font-weight: 400;
+                a{
+                    color: map.get($theme-colors,"normal-text");
+                    text-decoration: none;
+                }
+            }
+            h5 {
+                color: map.get($theme-colors,"normal-text");
+                margin-top: 10px;
+                font-size: 18px;
+                font-weight: 700;
+            }
+
+        }   
+    }
+}
+.end {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    cursor: pointer;
+    a {
+        margin: 30px;
+    }
+}

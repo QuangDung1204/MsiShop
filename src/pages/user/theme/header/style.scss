@@ -1,0 +1,227 @@
+@use "sass:map";
+@import "style/pages/theme";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap'); /* Import font đẹp */
+.header_top {
+    background: white;
+}
+.header_top_right {
+    display: flex;
+    justify-content: flex-end;
+    ul {
+        display: flex;
+        column-gap: 10px;
+        list-style: none;
+    }
+    a {
+        font-size: 16px;
+        color: map.get($theme-colors, "normal-text");
+    }
+    
+    span {
+        font-size: 16px;
+        // margin-left: 1px;
+        cursor: pointer;
+    }
+}
+
+.icon {
+    font-size: 18px; 
+    width: 18px; 
+    height: 18px; 
+    margin-right: 6px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;  
+    gap: 5px;
+}
+
+.logo-container img {
+    width: 40px; 
+    height: auto; 
+}
+
+.logo-container span {
+    font-size: 18px;  
+}
+
+.msishop-text {
+    font-family: 'Orbitron', sans-serif; /* Sử dụng font chữ hiện đại */
+    font-size: 24px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b); /* Thêm gradient */
+    -webkit-background-clip: text;
+    color: transparent; /* Điều này giúp gradient hiển thị trong văn bản */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Thêm đổ bóng để tạo chiều sâu */
+    letter-spacing: 1px;
+    text-transform: uppercase; /* Tùy chọn: viết hoa toàn bộ chữ */
+    animation: glowing 2s infinite alternate; /* Thêm hiệu ứng phát sáng */
+}
+
+@keyframes glowing {
+    from {
+        text-shadow: 0 0 10px #ff416c, 0 0 20px #ff4b2b, 0 0 30px #ff416c, 0 0 40px #ff4b2b;
+    }
+    to {
+        text-shadow: 0 0 20px #ff4b2b, 0 0 30px #ff416c, 0 0 40px #ff4b2b, 0 0 50px #ff416c;
+    }
+}
+
+.header__menu {
+    padding-left: 20px;
+    ul {
+        display: flex;
+        justify-content: space-between;
+        li {
+            list-style: none;
+            position: relative;
+            a {
+                text-decoration: none;
+                font-size: 14px;
+                color: map.get($theme-colors,"black-text");
+                text-transform: uppercase;
+                font-weight: bold;
+                letter-spacing: 2px;
+                transition: all 0.3s;
+                padding: 5px 0;
+                display: block;
+            }
+        }
+        li:hover .header__menu_drop{
+            opacity: 1;
+            visibility: visible;
+        }
+        .active a {
+            color: map.get($theme-colors,"main");
+        }
+        .header__menu_drop {
+            background: #222222;
+            display: block;
+            position: absolute;
+            width: 180px;
+            z-index: 9;
+            padding: 5px 0;
+            transition: all, 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            li {
+                a {
+                    text-transform: capitalize;
+                    color: #ffff;
+                    font-weight: 400;
+                    padding: 5px 15px;
+                }
+
+                :hover {
+                    color: map.get($theme-colors, "main");
+                }
+            }
+        }
+    }
+
+}
+
+.header_cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 0;
+    
+    ul{
+        display: flex;
+        position: relative;
+        margin-right: 25px;
+        li{
+            position: relative;
+            list-style: none;
+            margin-left: 20px;
+
+            svg{
+                font-size: 25px;
+                color: map.get($theme-colors,"normal-text");
+            }
+            span {
+                color: white;
+                background: map.get($theme-colors,"main");
+                position: absolute;
+                height: 20px;
+                width: 20px;
+                border-radius: 10px;
+                display: inline-block;
+                text-align: center;
+                line-height: 22px;
+                font-size: 20px;
+                font-weight: 500;
+                left: 5px;
+                top: -14px;
+            }
+        }
+    }
+    .icons {
+        cursor: pointer;
+        padding-left: 20px;
+    }
+    .icon_login{
+        font-size: 30px; 
+        width: 30px; 
+        height: 30px; 
+        margin-right: 6px;
+    }
+    span {
+        font-size: 20px; 
+        width: 20px; 
+        height: 20px;
+    }
+}
+
+.product_list__alll {
+    position: relative;
+
+    .product_list__all {
+        background: map.get($theme-colors, "main");
+        padding: 15px 25px 15px 30px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        color: #ffff;
+        font-weight: 700;
+
+        svg,
+        span {
+            font-size: 16px;
+            margin-right: 5px;
+            
+        }
+        svg {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+
+    ul {
+        border: 1px solid #ebebeb;
+        position: absolute;
+        width: 100%;
+        background: #ffff;
+        transition: all 0.2s;
+        li {
+            list-style: none;
+            a {
+                text-decoration: none;
+                background-color: transparent;
+                font-size: 16px;
+                color: map.get($theme-colors, "normal-text");
+                line-height: 39px;
+                display: block;
+                padding-left: 40px;
+            }
+            &:hover {
+                background: #f7ffff;
+                a {
+                    color: map.get($theme-colors, "main");
+                }
+            }
+        }
+    }
+}
+
