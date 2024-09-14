@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { Container } from 'react-bootstrap';
 
 const ShoppingCart = ({ cartItems }) => {
-    const items = cartItems || [];
+    const items = JSON.parse(localStorage.getItem('cartItems')) || [];
 
     return (
         <Container>

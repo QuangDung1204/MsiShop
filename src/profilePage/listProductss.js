@@ -7,6 +7,7 @@ import { formatter } from 'utils/fomater';
 import { toast } from 'react-toastify';
 import ShoppingCart from './shoppingCart';
 import { ROUTER } from 'utils/router';
+import Layout from 'Layout';
 
 const ListProduct = () => {
     const [cartItems, setCartItems] = useState([]);
@@ -19,22 +20,29 @@ const ListProduct = () => {
     }, []);
 
     const handleAddToCart = (product) => {
+        console.log(product);
         setCartItems((prevItems) => {
             const isItemInCart = prevItems.find(item => item.id === product.id);
 
+            let updatedItems;
             if (isItemInCart) {
-                return prevItems.map(item =>
+                updatedItems = prevItems.map(item =>
                     item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
                 );
+            } else {
+                updatedItems = [...prevItems, { ...product, quantity: 1 }];
             }
 
-            return [...prevItems, { ...product, quantity: 1 }];
+            localStorage.setItem('cartItems', JSON.stringify(updatedItems));
+            return updatedItems;
         });
 
         toast.success(`${product.name} đã được thêm vào giỏ hàng!`, {
             position: "top-right"
         });
     };
+
+    console.log(featProducts.all.products);
 
     const renderFeaturedProducts = (data) => {
         const tabList = [];
@@ -59,7 +67,7 @@ const ListProduct = () => {
 
                                 <ul className='featured__item__pic__hover'>
                                     <li>
-                                        <Link to={`${ROUTER.USER.DETAIL}/${featProducts.id}`}>
+                                        <Link to={`/products/${item.id}`}>
                                             <RemoveRedEyeOutlined />
                                         </Link>
                                     </li>
@@ -102,15 +110,17 @@ const ListProduct = () => {
     };
 
     return (
-        <div className='container'>
-            <div className='featured'>
+        <Layout>
+            <div className='container'>
+                <div className='featured'>
                 <div className='section_title'>
                     <h2>Các Sản Phẩm Nổi Bật</h2>
                 </div>
                 {renderFeaturedProducts(featProducts)}
             </div>
-            <ShoppingCart cartItems={cartItems} />
-        </div>
+                <ShoppingCart cartItems={cartItems} />
+            </div>
+        </Layout>
     );
 };
 

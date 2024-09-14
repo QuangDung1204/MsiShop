@@ -39,18 +39,25 @@ const renderUserRouter = () => {
     ]
 
     return (
-        <MasterLayout>
-            <Routes>
-                {
-                    userRouter.map((item, key) =>
-                    (
-                        <Route key={key} path={item.path} element={item.component} />
-                    )
-                    )
-                }
-            </Routes>
-        </MasterLayout>
-
+        // <MasterLayout>
+        //     <Routes>
+        //         {
+        //             userRouter.map((item, key) =>
+        //             (
+        //                 <Route key={key} path={item.path} element={item.component} />
+        //             )
+        //             )
+        //         }
+        //     </Routes>
+        // </MasterLayout>
+        <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/san-pham" element={<ListProductss />} />
+            <Route path="/san-pham/:id" element={<ProductDetailPage />} />
+            <Route path="/dang-nhap" element={<LoginUser />} />
+            {/* <Route path="/register" element={<RegisterUser />} /> */}
+            <Route path="/gio-hang" element={<ShoppingCart />} />
+        </Routes>
     )
 }
 
