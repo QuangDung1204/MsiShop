@@ -317,7 +317,7 @@ const featProducts = {
         ]
     },
     Gear: {
-        title: "Handhelds",
+        title: "Gaming",
         products: [
             {
                 id: 17,

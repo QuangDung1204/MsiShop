@@ -3,18 +3,10 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import msi6 from './img/msi6.png'
 import banphim from './img/banphim.png'
-import chuot from './img/chuot.png'
 import manhinh from './img/manhinh.png'
 import rtxcard from './img/rtxcard.png'
-import laptopmsi from './img/snapedit_1726145735754.png'
-import laptopmsi1 from './img/laptopmsi1.png'
 import pc from './img/pc.png'
 import "./style.scss"
-import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
-import { AddShoppingCartOutlined, RemoveRedEyeOutlined } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
-import { formatter } from 'utils/fomater';
-import featProducts from './productsData'
 const HomePage = () => {
 
     const responsive = {
@@ -40,82 +32,29 @@ const HomePage = () => {
         {
             bgImg: msi6,
             name: "Laptops Raider 18 HX A14V",
+            details: "CPU: Core i9-14900HX, RAM: 32GB, Storage: SSD 2TB, "
         },
         {
             bgImg: pc,
             name: "MPG Infinite X2 14th",
+            details: "CPU: Core™ i9 14900KF, GeForce RTX™ 4090"
         },
         {
             bgImg: manhinh,
             name: "MAG 271QPX QD-OLED",
+            details: "Resolution: 2560x1440, Refresh Rate: 360Hz"
         },
         {
             bgImg: rtxcard,
             name: "GeForce RTX™ 4090 GAMING X TRIO 24G",
+            details: "Memory: 24GB GDDR6X, CUDA Cores: 10496"
         },
         {
             bgImg: banphim,
             name: "VIGOR GK50 LOW PROFILE",
-        },
-        {
-            bgImg: chuot,
-            name: "CLUTCH GM41 LIGHTWEIGHT WIRELESS",
+            details: "Switch: Kailh Low Profile, Backlight: RGB"
         },
     ];
-
-    const renderFeaturedProducts = (data) => {
-        const tabList = [];
-        const tabPanels = [];
-
-        Object.keys(data).forEach((key, index) => {
-            tabList.push(<Tab key={index}>{data[key].title}</Tab>);
-
-            const tabPanel = [];
-            data[key].products.forEach((item, j) => {
-                tabPanel.push(
-                    <div className='col-lg-34' key={j}>
-                        <div className='featured__item'>
-                            <div className='featured__item__pic'
-                                style={{
-                                    backgroundImage: `url(${item.img})`
-                                }}>
-
-                                <ul className='featured__item__pic__hover'>
-                                    <li><RemoveRedEyeOutlined /></li>
-                                    <li><AddShoppingCartOutlined /></li>
-                                </ul>
-                            </div>
-                            <div className='featured__item__text'>
-                                <h6>
-                                    <Link to="">{item.name}</Link>
-                                </h6>
-                                <h5>
-                                    {formatter(item.price)}
-                                </h5>
-                            </div>
-
-                        </div>
-                    </div>
-                );
-            });
-            tabPanels.push(tabPanel);
-        });
-
-        return (
-            <Tabs>
-                <TabList>{tabList}</TabList>
-                {
-                    tabPanels.map((item, key) => (
-                        <TabPanel key={key}>
-                            <div className='row'>
-                                {item}
-                            </div>
-                        </TabPanel>
-                    ))
-                }
-            </Tabs>
-        );
-    }
 
 
     return (
@@ -123,27 +62,21 @@ const HomePage = () => {
             <div className='container container__slider'>
                 <div className=''>
                     <p className='center-text'>Sản phẩm trưng bày siêu đắt tiền</p>
-                    <div><Carousel responsive={responsive} className='slider'>
-
-                        {
-                            sliderItems.map((item, key) => (
-                                <div className='slider__item' key={key} >
-                                    <img src={item.bgImg} alt="Logo" />
-                                    <p>{item.name}</p>
+                    <div>
+                        <Carousel responsive={responsive} className='slider'>
+                            {sliderItems.map((item, key) => (
+                                <div className='slider__item' key={key}>
+                                    <img src={item.bgImg} alt={item.name} />
+                                    <p className='product-name'>{item.name}</p>
+                                    <div className='product-details'>
+                                        <p>{item.details}</p>
+                                    </div>
                                 </div>
-                            ))
-                        }</Carousel>
+                            ))}
+                        </Carousel>
                     </div>
                 </div>
 
-                <div className='container'>
-                    <div className='featured'>
-                        <div className='section_title'>
-                            <h2>Sản Phẩm Nổi Bật</h2>
-                        </div>
-                        {renderFeaturedProducts(featProducts)}
-                    </div>
-                </div>
 
                 <div className=''>
                     <h1>Tin Tức Công Nghệ</h1>

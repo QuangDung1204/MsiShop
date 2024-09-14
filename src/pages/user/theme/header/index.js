@@ -1,9 +1,7 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import './style.scss';
-
-
 import { AccountCircleOutlined, ArticleOutlined, HeadsetMicOutlined, HomeRepairServiceOutlined, LoyaltyOutlined, NotificationsActiveOutlined, ShoppingCart } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Marquee from './auto-text';
 import msilogo from './img/msilogo.png'
 import { formatter } from 'utils/fomater';
@@ -11,9 +9,12 @@ import { ROUTER } from 'utils/router';
 import SearchBar from './SearchBar/SearchBar';
 import ListIcon from '@mui/icons-material/List';
 import Slideshow from './Slideshow';
-import ImageList from './ImageList/ImageList';
+import ImageList from './ImageList/ImageListRight';
 
 const Header = () => {
+    const location = useLocation();
+    const [isHome, setIsHome] = useState(location.pathname.length <= 1);
+    const [isShowCategories, setIsShowCategories] = useState(isHome);
 
 
 
@@ -47,9 +48,34 @@ const Header = () => {
         },
         {
             name: "Chăm Sóc Khách Hàng",
-            path: ROUTER.USER.HOME,
+            path: ROUTER.USER.PROFILE,
+        },
+
+        {
+            name: "Giỏ Hàng của bạn",
+            path: ROUTER.USER.CART,
         }
     ])
+    const CartMenu = menus.find(menu => menu.name === "Giỏ Hàng của bạn");
+    const filteredMenus = menus.filter(menu =>
+        menu.name === "Trang Chủ" ||
+        menu.name === "Sản Phẩm" ||
+        menu.name === "Chăm Sóc Khách Hàng"
+    );
+
+    const categories = [
+        "LapTop",
+        "PC",
+        "Màn Hình Máy Tính",
+        "Gaming - Gear",
+        "Linh kiện máy tính",
+    ]
+
+    useEffect(() => {
+        const isHome = location.pathname.length <= 1;
+        setIsHome(isHome);
+        setIsShowCategories(isHome);
+    }, [location]);
 
     return (
         <>
@@ -95,28 +121,23 @@ const Header = () => {
                         <SearchBar />
 
                         <nav className='header__menu'>
-                            <ul >
-                                {
-                                    menus?.map((menu, menuKey) => (
-                                        <li key={menuKey} className={menuKey === 0 ? 'active' : ""}>
-                                            <Link to={menu?.path}>{menu?.name}</Link>
-                                            {
-                                                menu.child && (
-                                                    <ul className='header__menu_drop'>
-                                                        {
-                                                            menu.child.map((childItem, childKey) => (
-                                                                <li key={'${menuKey}-${childKey}'}>
-                                                                    <Link to={childItem.path}>{childItem.name}</Link>
-                                                                </li>
-                                                            ))
-                                                        }
-
-                                                    </ul>
-                                                )
-                                            }
-                                        </li>
-                                    ))
-                                }
+                            <ul>
+                                {filteredMenus.map((menu, menuKey) => (
+                                    <li key={menuKey} className={menuKey === 0 ? 'active' : ""}>
+                                        <Link to={menu?.path}>{menu?.name}</Link>
+                                        {
+                                            menu.child && (
+                                                <ul className='header__menu_drop'>
+                                                    {menu.child.map((childItem, childKey) => (
+                                                        <li key={`${menuKey}-${childKey}`}>
+                                                            <Link to={childItem.path}>{childItem.name}</Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            )
+                                        }
+                                    </li>
+                                ))}
                             </ul>
                         </nav>
                     </div>
@@ -127,7 +148,7 @@ const Header = () => {
                             </div>
                             <ul>
                                 <li>
-                                    <Link to="/Cart">
+                                    <Link to={CartMenu?.path || "/"}>
                                         <ShoppingCart />
                                     </Link>
                                     <span>3</span>
@@ -137,7 +158,7 @@ const Header = () => {
                                     <NotificationsActiveOutlined />
                                 </div>
 
-                                <Link to={""} className=''>
+                                <Link to={ROUTER.USER.LOGIN} className=''>
                                     <li><AccountCircleOutlined class="icon_login" />
                                     </li>
                                 </Link><span>Đăng nhập</span>
@@ -149,29 +170,31 @@ const Header = () => {
                 </div>
             </div>
             <div className='container ' >
-                <div className='row product_list'>
-                    <div className='col-lg-4 product_list__alll'>
-                        <div className='product_list__all'>
-                            <ListIcon />
-                            Sản Phẩm Của MSI
+                {
+                    isHome && (
+                        <div className='row product_list'>
+                            <div className='col-lg-4 product_list__alll'>
+                                <div className='product_list__all'>
+                                    <ListIcon />
+                                    Sản Phẩm Của MSI
+                                </div>
+                                <ul>
+                                    {
+                                        categories.map((category, key) => (
+                                            <li key={key}><Link to={ROUTER.USER.PRODUCTS}>{category}</Link></li>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+                            <div className='col-lg-6'>
+                                <Slideshow />
+                            </div>
+                            <div className='col-lg-4'>
+                                <ImageList />
+                            </div>
                         </div>
-                        <ul>
-                            <li><Link to={"#"}>LapTop</Link></li>
-                            <li><Link to={"#"}>PC</Link></li>
-                            <li><Link to={"#"}>Màn Hình Máy Tính</Link></li>
-                            <li><Link to={"#"}>Gaming-Gear</Link></li>
-                            <li><Link to={"#"}>Linh kiện máy tính</Link></li>
-                            <li><Link to={"#"}>Phụ kiện máy tính</Link></li>
-
-                        </ul>
-                    </div>
-                    <div className='col-lg-6'>
-                        <Slideshow />
-                    </div>
-                    <div className='col-lg-4'>
-                        <ImageList />
-                    </div>
-                </div>
+                    )
+                }
             </div>
         </>
 

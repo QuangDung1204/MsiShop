@@ -1,0 +1,76 @@
+{
+    "productsData": [
+        {
+            "id": 0,
+            "img": "https://product.hstatic.net/1000233206/product/laptop-msi-stealth-18-ai-studio-a1vhg-025vn_f0c66531ea404f9cae17ae052e0d913b_grande.png",
+            "name": "Laptop gaming MSI Stealth 18 AI Studio A1VHG-025VN",
+            "price": 137990000
+        },
+        {
+            "id": 1,
+            "img": "https://product.hstatic.net/200000722513/product/18amg-1-1024x1024_ac398a2e896e4f2294231cb847edb1fe_grande.png",
+            "name": "Laptop gaming MSI Stealth 18 Mercedes AMG A1VHG-080VN",
+            "price": 77990000
+        },
+        {
+            "id": 2,
+            "img": "https://product.hstatic.net/200000722513/product/aming-msi-crosshair-15-b12uez-460vn-4_3af857b762624986897c135350866cf6_98dbb404142348548dbc20c2fcc60058_grande.png",
+            "name": "Máy tính xách tay/ Laptop MSI Crosshair 15 B12UEZ-460VN",
+            "price": 34990000
+        },
+        {
+            "id": 4,
+            "img": "https://bizweb.dktcdn.net/100/386/607/products/tai-xuong-removebg-preview.png?v=1681789918107",
+            "name": "Laptop MSI Prestige 16 Studio A13VE - 214VN",
+            "price": 40990000
+        },
+        {
+            "id": 5,
+            "img": "https://product.hstatic.net/200000722513/product/1024__4__46f03588c01d49f49a81ec03c75983b8_grande.png",
+            "name": "Laptop MSI Bravo 15 C7VFK-275VN",
+            "price": 27490000
+        },
+        {
+            "id": 6,
+            "img": "https://asset.msi.com/resize/image/global/product/product_16681474672e22620f836c3d7ce248a04b704a3210.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png",
+            "name": "Katana 15 B13VFK (676VN)",
+            "price": 27990000
+        },
+        {
+            "id": 7,
+            "img": "https://asset.msi.com/resize/image/global/product/product_1624295629c2f5f3358c82d0c230cf9255422c187b.png62405b38c58fe0f07fcef2367d8a9ba1/400.png",
+            "name": "MAG Infinite S3 12th",
+            "price": 15490000
+        },
+        {
+            "id": 8,
+            "img": "https://asset.msi.com/resize/image/global/product/product_172016309252e4eeaa75b78a6f56a682acadce8c72.png62405b38c58fe0f07fcef2367d8a9ba1/400.png",
+            "name": "MEG Trident X2 14th",
+            "price": 142000000
+        },
+        {
+            "id": 9,
+            "img": "https://asset.msi.com/resize/image/global/product/product_6_20190711103706_5d26a0d28bc56.png62405b38c58fe0f07fcef2367d8a9ba1/400.png",
+            "name": "Trident X Plus 9th",
+            "price": 26990000
+        },
+        {
+            "id": 10,
+            "img": "https://asset.msi.com/resize/image/global/product/product_1720503839978be83dbbfe10424b531245172c70b7.png62405b38c58fe0f07fcef2367d8a9ba1/400.png",
+            "name": "MPG Infinite X2 14th",
+            "price": 130000000
+        },
+        {
+            "id": 11,
+            "img": "https://asset.msi.com/resize/image/global/product/product_167633815874f9e1c40909ec6c1a221f8178c94ea2.png62405b38c58fe0f07fcef2367d8a9ba1/400.png",
+            "name": "MEG Trident X2 13th",
+            "price": 103000000
+        },
+        {
+            "id": 12,
+            "img": "https://asset.msi.com/resize/image/global/product/product_16445568779c74d967907bfac4fc4942a3bf934ac8.png62405b38c58fe0f07fcef2367d8a9ba1/400.png",
+            "name": "MPG Trident AS 12th",
+            "price": 55990000
+        }
+    ]
+}
